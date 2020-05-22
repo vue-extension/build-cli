@@ -1,19 +1,22 @@
 {
   "name": "@vuext/build-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "build-util",
   "main": "index.js",
+  "bin": {
+    "v-up": "./src/v-up.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "v-up": "node ./src/v-up.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vue-extension/build-util.git"
+    "url": "git+https://github.com/vue-extension/build-cli.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vue-extension/build-util/issues"
+    "url": "https://github.com/vue-extension/build-cli/issues"
   },
-  "homepage": "https://github.com/vue-extension/build-util#readme"
+  "homepage": "https://github.com/vue-extension/build-cli#readme"
 }
