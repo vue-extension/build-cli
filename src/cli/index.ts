@@ -1,9 +1,10 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env node
 /**
  * vext-cli command line
  * @author Zou Jian <https://github.com/chsword>
  */
-import * as program from "commander";
+const { createCommand } = require('commander');
+const program = createCommand();
 import print from "../print";
 const packageInfo = require('../../package.json');
 program

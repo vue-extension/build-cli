@@ -1,21 +1,26 @@
 import print from '../print';
 import { series, src, dest } from "gulp";
-import * as babel from "gulp-babel";
+const babel = require('gulp-babel');
 import * as path from 'path';
-import * as clean from "gulp-clean";
+const clean = require("gulp-clean");
 
 class BuildManager {
     buildLib() {
-        print.success(path.resolve('./src/**/*.ts'), process.versions.node)
+        print.log(path.resolve('./src/**/*.ts'))
+        print.log(path.resolve('./lib'))
         return src(path.resolve('./src/**/*.ts'))
+            .on('error', function (err) {
+                console.log('buildLib Error!', err);
+                this.end();
+            })
             .pipe(babel({
                 babelrc: false,
                 configFile: false,
                 presets: [
                     '@babel/preset-typescript',
                     ['@babel/preset-env', {
-                        modules: 'cjs',
-                        targets: { "node": process.versions.node }
+                        modules: 'auto',
+                        targets: { "node": "current" }
                     }],
                     "@babel/preset-flow"
                 ],
@@ -29,8 +34,13 @@ class BuildManager {
             .pipe(dest(path.resolve('./lib')));
     }
     buildEs() {
-        print.note(`build ${path.resolve('./src/**/*.ts')} to es`)
+        print.log(path.resolve('./src/**/*.ts'))
+        print.log(path.resolve('./es'))
         return src(path.resolve('./src/**/*.ts'))
+            .on('error', function (err) {
+                console.log('buildEs Error!', err);
+                this.end();
+            })
             .pipe(babel({
                 babelrc: false,
                 configFile: false,
@@ -53,31 +63,12 @@ class BuildManager {
             }))
             .pipe(dest(path.resolve('./es')));
     }
-    run(watch: boolean = false) {
-        // if (isLerna(cwd)) {
-        //     const dirs = readdirSync(join(cwd, 'packages'))
-        //         .filter(dir => dir.charAt(0) !== '.');
-        //     pkgCount = dirs.length;
-        //     dirs.forEach(pkg => {
-        //         build(`./packages/${pkg}`, {
-        //             cwd,
-        //             watch,
-        //         });
-        //     });
-        // } else {
-        //     pkgCount = 1;
-        //     build('./', {
-        //         cwd,
-        //         watch,
-        //     });
-        // }
-    }
     cleanLib() {
-        return src('./lib', { read: false, allowEmpty: true })
+        return src(path.resolve('./lib'), { read: false, allowEmpty: true })
             .pipe(clean());
     };
     cleanEs() {
-        return src('./es', { read: false, allowEmpty: true })
+        return src(path.resolve('./es'), { read: false, allowEmpty: true })
             .pipe(clean());
     };
 }

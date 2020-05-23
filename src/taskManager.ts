@@ -1,4 +1,4 @@
-import * as gulp from "gulp";
+const gulp = require("gulp");
 
 class TaskManager {
     runTask(toRun) {

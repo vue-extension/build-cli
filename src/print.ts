@@ -1,9 +1,9 @@
-import { Signale, SignaleOptions } from 'signale';
-import * as chalk from 'chalk';
+import { Signale } from 'signale';
+const chalk = require('chalk');
 type Color = "red" | "green" | "cyan" | "magenta" | "yellow" | "blue"
 
-class Print<TTypes extends string> extends Signale {
-    constructor(options?: SignaleOptions<TTypes>) {
+class Print extends Signale {
+    constructor(options?: any) {
         super(options);
     }
     custom(color: Color, ...text: string[]) {
@@ -25,7 +25,6 @@ class Print<TTypes extends string> extends Signale {
         this.custom("green", ...text)
     }
 }
-const signale = new Print({
-});
+const signale = new Print();
 
 export default signale;

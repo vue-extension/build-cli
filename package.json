@@ -1,27 +1,41 @@
 {
-  "name": "@vext/build-cli",
-  "version": "1.1.22",
+  "name": "@vext/cli",
+  "version": "1.1.33",
   "description": "vue-extension build cli / build tools",
-  "main": "src/index.ts",
+  "main": "./lib/bin/build-cli.js",
+  "module": "./es/bin/build-cli.js",
   "bin": {
-    "vext-cli": "./src/bin/build-cli.ts",
-    "vext-cli-run": "./src/bin/build-cli-run.ts"
+    "vext-cli": "./lib/bin/build-cli.js",
+    "vext-cli-run": "./lib/bin/build-cli-run.js"
   },
   "scripts": {
-    "vext-cli": "ts-node ./src/bin/build-cli.ts",
-    "vext-cli-run": "ts-node ./src/bin/build-cli-run.ts"
+    "cli": "ts-node ./src/bin/build-cli.ts",
+    "cli-run": "ts-node ./src/bin/build-cli-run.ts",
+    "test": "node ./lib/bin/build-cli-run.js build:es",
+    "pub": "npm run cli-run build & npm run cli-run patch-up & npm publish"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vue-extension/build-cli.git"
   },
+  "files": [
+    "es",
+    "lib"
+  ],
   "author": "vext,chsword",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vue-extension/build-cli/issues"
   },
   "homepage": "https://github.com/vue-extension/build-cli#readme",
-  "devDependencies": {
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "lodash": "^4.17.15",
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-do-expressions": "^7.8.3",
@@ -31,23 +45,19 @@
     "@babel/preset-flow": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.6",
-    "@types/glob": "^7.1.1",
-    "@types/gulp": "^4.0.6",
-    "@types/node": "^14.0.5",
-    "@types/rimraf": "^3.0.0",
-    "chalk": "^4.0.0",
-    "commander": "^5.1.0",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "lodash": "^4.17.15",
     "rimraf": "^3.0.2",
     "signale": "^1.4.0",
     "through2": "3.0.0",
     "ts-loader": "^7.0.4",
-    "ts-node": "^8.10.1",
     "typescript": "~3.5.3",
-    "vinyl-fs": "^3.0.3"
+    "vinyl-fs": "^3.0.3",
+    "ts-node": "^8.10.1"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/gulp": "^4.0.6",
+    "@types/node": "^14.0.5",
+    "@types/rimraf": "^3.0.0",
+    "@types/signale": "^1.4.1"
   }
 }
