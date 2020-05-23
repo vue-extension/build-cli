@@ -1,29 +1,31 @@
-class Print {
-    private _log(str: string) {
-        console.log(str)
-        return this;
-    }
-    warn(str: string) {
-        return this._log(`\x1b[33m${str}`);
-    }
-    primary(str: string) {
-        return this._log(`\x1b[34m${str}`);
-    }
-    keyword(str: string) {
-        return this._log(`\x1b[35m${str}`);
-    }
-    log(str: string = "") {
-        return this._log(`\x1b[30m${str}`);
-    }
-    info(str: string) {
-        return this._log(`\x1b[36m${str}`);
-    }
-    error(str: string) {
-        return this._log(`\x1b[31m${str}`);
+import { Signale, SignaleOptions } from 'signale';
+import * as chalk from 'chalk';
+type Color = "red" | "green" | "cyan" | "magenta" | "yellow" | "blue"
 
+class Print<TTypes extends string> extends Signale {
+    constructor(options?: SignaleOptions<TTypes>) {
+        super(options);
     }
-    success(str: string) {
-        return this._log(`\x1b[32m${str}`);
+    custom(color: Color, ...text: string[]) {
+        console.log(chalk[color](...text))
+    }
+    primary(...text: string[]) {
+        this.custom("cyan", ...text)
+    }
+    cyan(...text: string[]) {
+        this.custom("cyan", ...text)
+    }
+    keyword(...text: string[]) {
+        this.custom("magenta", ...text)
+    }
+    red(...text: string[]) {
+        this.custom("red", ...text)
+    }
+    green(...text: string[]) {
+        this.custom("green", ...text)
     }
 }
-export default new Print();
+const signale = new Print({
+});
+
+export default signale;

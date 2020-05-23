@@ -1,16 +1,26 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 /**
- * vuext-cli-run command line
+ * vext-cli-run command line
  * @author Zou Jian <https://github.com/chsword>
  */
 import * as program from "commander";
 import print from "../print";
 import taskManager from "../taskManager";
 program.on('--help', () => {
-    print.log("")
-        .info("Command list:")
-        .keyword("")
-        .log("");
+    print.log("");
+    print.cyan("Command list:");
+    print.note("version");
+    print.keyword("major-up\t Increment the major version");
+    print.keyword("minor-up\t Increment the minor version");
+    print.keyword("patch-up\t Increment the patch version");
+    print.note("build");
+    print.keyword("clean\t\t Clean all build files");
+    print.keyword("clean:es\t Clean es build files");
+    print.keyword("clean:lib\t Clean lib build files");
+    print.keyword("build\t\t Build es / lib");
+    print.keyword("build:es\t Build to es");
+    print.keyword("build:lib\t Build to lib");
+    print.log("");
 });
 
 program.parse(process.argv);
@@ -22,9 +32,10 @@ if (!task) {
     // console.log(`Listening at http://localhost:${port}`);
     // const app = require('../server/')();
     // app.listen(port);
-    print.warn("current parameter not support yet").log();
+    print.warn("current parameter not support yet")
+    print.log();
 } else {
-    print.keyword(`vuext-cli run ${task}`);
+    print.keyword(`vext-cli run ${task}`);
     require('../gulpfile');
     taskManager.runTask(task);
 }

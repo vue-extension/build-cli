@@ -4,12 +4,7 @@
  */
 import { task, src, dest, series } from "gulp";
 import print from "./print";
-import versionManager from "./versionUp";
-const test = function () {
-    print.info("test").log();
-    return;
-};
-task(test);
-task("major-up", versionManager.cases.major);
-task("minor-up", versionManager.cases.minor);
-task("patch-up", versionManager.cases.patch);
+import versionManagerInstaller from "./tasks/versionUp";
+versionManagerInstaller(task);
+import buildManagerInstaller from "./tasks/build";
+buildManagerInstaller(task);

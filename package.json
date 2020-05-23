@@ -1,42 +1,53 @@
 {
-  "name": "@vuext/build-cli",
-  "version": "1.1.14",
+  "name": "@vext/build-cli",
+  "version": "1.1.22",
   "description": "vue-extension build cli / build tools",
-  "main": "index.js",
+  "main": "src/index.ts",
   "bin": {
-    "v-up": "./src/v-up.ts",
-    "vuext-cli": "./src/bin/build-cli.ts",
-    "vuext-cli-run": "./src/bin/build-cli-run.ts"
+    "vext-cli": "./src/bin/build-cli.ts",
+    "vext-cli-run": "./src/bin/build-cli-run.ts"
   },
   "scripts": {
-    "tsc": "tsc . -p",
-    "v-up": "ts-node ./src/v-up.ts",
-    "vuext-cli": "ts-node ./src/bin/build-cli.ts",
-    "vuext-cli-run": "ts-node ./src/bin/build-cli-run.ts",
-    "gulp": "gulp test -f ./src/gulpfile.ts"
+    "vext-cli": "ts-node ./src/bin/build-cli.ts",
+    "vext-cli-run": "ts-node ./src/bin/build-cli-run.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vue-extension/build-cli.git"
   },
-  "author": "",
+  "author": "vext,chsword",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vue-extension/build-cli/issues"
   },
   "homepage": "https://github.com/vue-extension/build-cli#readme",
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-do-expressions": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-flow": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@babel/runtime": "^7.9.6",
     "@types/glob": "^7.1.1",
     "@types/gulp": "^4.0.6",
     "@types/node": "^14.0.5",
+    "@types/rimraf": "^3.0.0",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "lodash": "^4.17.15",
+    "rimraf": "^3.0.2",
+    "signale": "^1.4.0",
+    "through2": "3.0.0",
     "ts-loader": "^7.0.4",
     "ts-node": "^8.10.1",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "vinyl-fs": "^3.0.3"
   }
 }

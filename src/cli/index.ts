@@ -1,15 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 /**
- * vuext-cli command line
+ * vext-cli command line
  * @author Zou Jian <https://github.com/chsword>
  */
 import * as program from "commander";
 import print from "../print";
 const packageInfo = require('../../package.json');
 program
-    .version(packageInfo.version)
-    .command('run [name]', 'run specified task')
-    .parse(process.argv);
+    .version(packageInfo.version);
 
 // https://github.com/tj/commander.js/pull/260
 const proc = program.runningCommand;
@@ -26,7 +24,11 @@ process.on('SIGINT', () => {
     process.exit(0);
 });
 
-const subCmd = program.args[0];
+const subCmd = (program.args && program.args.length) ? program.args[0] : "";
+
 if (!subCmd || subCmd !== 'run') {
     program.help();
-} 
+} else {
+    program.command('run [name]', 'run specified task')
+        .parse(process.argv)
+}

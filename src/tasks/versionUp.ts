@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // https://github.com/tumerorkun/v-up/blob/master/index.js
-import print from './print';
+import print from '../print';
 const fs = require('fs');
 type PartName = "patch" | "major" | "minor";
 
@@ -20,11 +20,11 @@ class VersionManager {
   private changeVersion = (version) => {
     newVersion = packageJSON.version = version;
     fs.writeFileSync(process.cwd() + '/package.json', JSON.stringify(packageJSON, null, 2) + '\n', 'utf8');
-    print.log('')
-      .info('Version updated')
-      .error(`  old version -> ${oldVersion}`)
-      .success(`  new version -> ${newVersion}`)
-      .log('');
+    print.log('');
+    print.primary('Version updated')
+    print.red(`  old version -> ${oldVersion}`)
+    print.green(`  new version -> ${newVersion}`)
+    print.log('');
   }
 
   cases = {
@@ -42,4 +42,9 @@ class VersionManager {
     },
   }
 }
-export default new VersionManager();
+const versionManager = new VersionManager();
+export default (task: Function) => {
+  task("major-up", versionManager.cases.major);
+  task("minor-up", versionManager.cases.minor);
+  task("patch-up", versionManager.cases.patch);
+};
