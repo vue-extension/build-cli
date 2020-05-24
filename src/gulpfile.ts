@@ -6,5 +6,8 @@ import { task, src, dest, series } from "gulp";
 import print from "./print";
 import versionManagerInstaller from "./tasks/versionUp";
 versionManagerInstaller(task);
-import buildManagerInstaller from "./tasks/build";
-buildManagerInstaller(task);
+// import buildManagerInstaller from "./tasks/build";
+// buildManagerInstaller(task);
+
+import rollupInstaller from "./tasks/buildRollup";
+rollupInstaller(task);

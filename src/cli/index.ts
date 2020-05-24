@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * vext-cli command line
  * @author Zou Jian <https://github.com/chsword>
