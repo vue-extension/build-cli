@@ -1,11 +1,10 @@
 //import * as rollup from "rollup";
-import { src, dest, series } from "gulp";
+import { src, series } from "gulp";
 import fileManager from "../utils";
 //const rollup = require("rollup");
 import * as rollup from "rollup";
 const rollupTypescript = require("@rollup/plugin-typescript");
-import { PlatformPath } from "path";
-const path: PlatformPath = require("path");
+import * as path from "path";
 import print from "../print";
 const clean = require("gulp-clean");
 type FormatType = "amd" | "cjs" | "esm" | "iife" | "umd";

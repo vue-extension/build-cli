@@ -1,9 +1,9 @@
 {
+  "root": true,
   "env": {
-    "browser": true,
-    "es6": true
+    "node": true
   },
-  "extends": ["plugin:vue/essential", "prettier"],
+  "extends": ["plugin:vue/essential", "eslint:recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -13,5 +13,8 @@
     "parser": "@typescript-eslint/parser"
   },
   "plugins": ["vue", "@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "no-prototype-builtins": "off",
+    "no-unused-vars": "off"
+  }
 }

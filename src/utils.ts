@@ -1,6 +1,6 @@
-import { PlatformPath } from "path";
+import * as path from "path";
 import * as fs from "fs";
-const path: PlatformPath = require("path");
+//const path: PlatformPath = require("path");
 export class FileManager {
   rootPath: string;
   constructor(rootPath: string) {
@@ -12,7 +12,7 @@ export class FileManager {
     var result: Array<string> = [];
     var baseDir = path.resolve(basePath);
     var files = fs.readdirSync(baseDir);
-    files.forEach((filename, index) => {
+    files.forEach((filename /*, index*/) => {
       const pathname = path.join(baseDir, filename);
       var stats = fs.statSync(pathname);
       if (stats.isDirectory()) {
