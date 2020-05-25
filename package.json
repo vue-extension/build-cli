@@ -1,26 +1,30 @@
 {
   "name": "@vext/cli",
-  "version": "1.1.33",
-  "description": "vue-extension build cli / build tools",
-  "main": "./lib/bin/build-cli.js",
-  "module": "./es/bin/build-cli.js",
+  "version": "1.1.37",
+  "description": "vue-extension build cli / build tools vext-cli",
+  "keywords": [
+    "front-end",
+    "cli"
+  ],
+  "main": "./bin/vext-cli.js",
   "bin": {
-    "vext-cli": "./lib/bin/build-cli.js",
-    "vext-cli-run": "./lib/bin/build-cli-run.js"
+    "vext-cli": "./bin/vext-cli.js",
+    "vext-cli-run": "./bin/vext-cli-run.js"
   },
   "scripts": {
-    "cli": "ts-node ./src/bin/build-cli.ts",
-    "cli-run": "ts-node ./src/bin/build-cli-run.ts",
-    "test": "node ./lib/bin/build-cli-run.js build:es",
-    "pub": "npm run cli-run build & npm run cli-run patch-up & npm publish"
+    "cli": "ts-node ./src/cli/vext-cli.ts",
+    "cli-run": "ts-node ./src/cli/vext-cli-run.ts",
+    "test": "node ./bin/vext-cli-run.js build:es",
+    "pub": "npm run cli-run build:lib & npm run cli-run patch-up & npm publish --access public",
+    "t": "tsc --declarationDir types --declaration true"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vue-extension/build-cli.git"
   },
   "files": [
-    "es",
-    "lib"
+    "lib",
+    "bin"
   ],
   "author": "vext,chsword",
   "license": "MIT",
@@ -39,12 +43,14 @@
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.6",
     "@rollup/plugin-typescript": "^4.1.2",
+    "rollup-plugin-typescript2": "^0.27.1",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "lodash": "^4.17.15",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.10.9",
     "signale": "^1.4.0",
@@ -60,6 +66,15 @@
     "@types/gulp": "^4.0.6",
     "@types/node": "^14.0.5",
     "@types/rimraf": "^3.0.0",
-    "@types/signale": "^1.4.1"
+    "@types/signale": "^1.4.1",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2"
   }
 }
