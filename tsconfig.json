@@ -2,11 +2,17 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "lib": ["es7"],
+    "lib": [
+      "es7"
+    ],
     "sourceMap": true,
     "rootDir": "src",
-    "allowJs": true
+    "allowJs": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
