@@ -1,7 +1,6 @@
 import { PlatformPath } from "path";
 import * as fs from "fs";
 const path: PlatformPath = require("path");
-// const fs = require('fs')
 export class FileManager {
   rootPath: string;
   constructor(rootPath: string) {
