@@ -1,20 +1,20 @@
 {
   "name": "@vext/cli",
-  "version": "1.1.36",
+  "version": "1.1.37",
   "description": "vue-extension build cli / build tools vext-cli",
   "keywords": [
     "front-end",
     "cli"
   ],
-  "main": "./lib/bin/vext-cli.js",
+  "main": "./bin/vext-cli.js",
   "bin": {
-    "vext-cli": "./lib/bin/vext-cli.js",
-    "vext-cli-run": "./lib/bin/vext-cli-run.js"
+    "vext-cli": "./bin/vext-cli.js",
+    "vext-cli-run": "./bin/vext-cli-run.js"
   },
   "scripts": {
-    "cli": "ts-node ./src/bin/vext-cli.ts",
-    "cli-run": "ts-node ./src/bin/vext-cli-run.ts",
-    "test": "node ./lib/bin/vext-cli-run.js build:es",
+    "cli": "ts-node ./src/cli/vext-cli.ts",
+    "cli-run": "ts-node ./src/cli/vext-cli-run.ts",
+    "test": "node ./bin/vext-cli-run.js build:es",
     "pub": "npm run cli-run build:lib & npm run cli-run patch-up & npm publish --access public"
   },
   "repository": {
@@ -22,7 +22,8 @@
     "url": "git+https://github.com/vue-extension/build-cli.git"
   },
   "files": [
-    "lib"
+    "lib",
+    "bin"
   ],
   "author": "vext,chsword",
   "license": "MIT",
