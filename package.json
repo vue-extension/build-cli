@@ -15,7 +15,8 @@
     "cli": "ts-node ./src/cli/vext-cli.ts",
     "cli-run": "ts-node ./src/cli/vext-cli-run.ts",
     "test": "node ./bin/vext-cli-run.js build:es",
-    "pub": "npm run cli-run build:lib & npm run cli-run patch-up & npm publish --access public"
+    "pub": "npm run cli-run build:lib & npm run cli-run patch-up & npm publish --access public",
+    "t": "tsc --declarationDir types --declaration true"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.6",
     "@rollup/plugin-typescript": "^4.1.2",
+    "rollup-plugin-typescript2": "^0.27.1",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
     "gulp": "^4.0.2",
