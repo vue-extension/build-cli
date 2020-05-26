@@ -89,7 +89,7 @@ class BuildManager {
       declaration: true,
       module: "commonjs",
       target: "es6",
-      lib: ["es7"],
+      lib: ["es7", "ScriptHost", "DOM"],
     };
     settings.de;
     var tsProject = ts.createProject(settings);
