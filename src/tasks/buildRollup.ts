@@ -8,7 +8,7 @@ import * as path from "path";
 import print from "../print";
 const clean = require("gulp-clean");
 type FormatType = "amd" | "cjs" | "esm" | "iife" | "umd";
-import * as  ts from 'gulp-typescript';
+import * as ts from "gulp-typescript";
 //import * as through2 from "through2";
 async function buildFile(options: {
   fromDir: string;
@@ -86,19 +86,15 @@ class BuildManager {
     );
   }
   async buildTypes() {
+    print.start("build:types start");
     var settings: ts.Settings = {
-      module: "commonjs",
-      target: "es6",
-      lib: ["es7", "dom"],
       declaration: true,
-      emitDeclarationOnly: true,
     };
-    settings.de
+    settings.de;
     var tsProject = ts.createProject(settings);
-    var tsResult = src("src/**/*.ts")
-      .pipe(tsProject());
+    var tsResult = src("src/**/*.ts").pipe(tsProject());
 
-    return tsResult.js.pipe(dest('dist'));
+    return tsResult.dts.pipe(dest("./types"));
   }
 }
 
@@ -107,17 +103,22 @@ export default (task) => {
   task("clean:lib", buildManager.cleanLib);
   task("clean:es", buildManager.cleanEs);
   task("clean:types", buildManager.cleanTypes);
-  task("clean", series(buildManager.cleanLib, buildManager.cleanEs, buildManager.cleanTypes));
+  task(
+    "clean",
+    series(buildManager.cleanLib, buildManager.cleanEs, buildManager.cleanTypes)
+  );
   task("build:es", buildManager.buildEs);
   task("build:lib", buildManager.buildLib);
   task(
     "build",
     series(
+      buildManager.cleanTypes,
       buildManager.cleanLib,
       buildManager.cleanEs,
       buildManager.buildLib,
-      buildManager.buildEs
+      buildManager.buildEs,
+      buildManager.buildTypes
     )
   );
-  task("build:types", buildManager.buildTypes);
+  task("build:types", series(buildManager.cleanTypes, buildManager.buildTypes));
 };
