@@ -1,6 +1,6 @@
 {
   "name": "@vext/cli",
-  "version": "1.1.38",
+  "version": "1.1.39",
   "description": "vue-extension build cli / build tools vext-cli",
   "keywords": [
     "front-end",

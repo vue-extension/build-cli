@@ -1,7 +1,6 @@
 //import * as rollup from "rollup";
 import { src, series, dest } from "gulp";
 import fileManager from "../utils";
-//const rollup = require("rollup");
 import * as rollup from "rollup";
 const rollupTypescript = require("@rollup/plugin-typescript");
 import * as path from "path";
@@ -9,7 +8,6 @@ import print from "../print";
 const clean = require("gulp-clean");
 type FormatType = "amd" | "cjs" | "esm" | "iife" | "umd";
 import * as ts from "gulp-typescript";
-//import * as through2 from "through2";
 async function buildFile(options: {
   fromDir: string;
   toDir: string;
@@ -89,6 +87,9 @@ class BuildManager {
     print.start("build:types start");
     var settings: ts.Settings = {
       declaration: true,
+      module: "commonjs",
+      target: "es6",
+      lib: ["es7"],
     };
     settings.de;
     var tsProject = ts.createProject(settings);
