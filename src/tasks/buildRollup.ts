@@ -56,6 +56,11 @@ class BuildManager {
       clean()
     );
   }
+  cleanDist() {
+    return src(path.resolve("./dist"), { read: false, allowEmpty: true }).pipe(
+      clean()
+    );
+  }
   async buildLib() {
     // return src(path.resolve("./src/**/*.ts"))
     //   .pipe(buildRollup({}))
@@ -106,7 +111,7 @@ export default (task) => {
   task("clean:types", buildManager.cleanTypes);
   task(
     "clean",
-    series(buildManager.cleanLib, buildManager.cleanEs, buildManager.cleanTypes)
+    series(buildManager.cleanLib, buildManager.cleanEs, buildManager.cleanTypes, buildManager.cleanDist)
   );
   task("build:es", buildManager.buildEs);
   task("build:lib", buildManager.buildLib);
